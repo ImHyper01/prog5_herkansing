@@ -29,6 +29,12 @@ class productController extends Controller
 
     public function postCreate(Request $request)
     {
+
+        $request->validate([
+           'name' => 'required|min:1|max:50',
+           'price' => 'required|numeric|min:0|max:5000'
+        ]);
+
         $create = new product();
         $create->name = request('name');
         $create->price = request('price');
