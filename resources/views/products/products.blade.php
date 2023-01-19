@@ -2,7 +2,10 @@
 
 @section('content')
 <h2>Producten</h2>
+
+@if(Auth::user()?->admin == 1)
 <a href="{{route('create')}}">Create</a>
+@endif
 
 <form method="get" action="{{url('/search')}}">
     <input type="text" name="search" placeholder="Zoek">
@@ -24,8 +27,10 @@
     <li>prijs: €{{$product['price']}}</li>
     <a href="{{route('buy')}}">Kopen!</a>
 
+    @if(Auth::user()?->admin == 1)
     <a href="{{route('deleteProduct', ['id' => $product['id']])}}">delete</a>
     <a href="{{route('editProduct', ['id' => $product['id']])}}" >edit</a>
+    @endif
 
 @endforeach
 
