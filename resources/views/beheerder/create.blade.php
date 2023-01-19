@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="{{route('create.post')}}" method="post">
+<form action="{{route('createPost')}}" method="post">
     @csrf {{ csrf_field() }}
     <label for="title">name</label>
     <input type="text" name="name">
@@ -20,5 +20,6 @@
     </div>
 @endif
 
+    <a href="{{route('products')}}">terug naar de product pagina</a>
 
 @endsection
