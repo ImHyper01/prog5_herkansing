@@ -4,7 +4,7 @@
 <h2>Producten</h2>
 
 @if(Auth::user()?->admin == 1)
-<a href="{{route('create')}}">Create</a>
+<a href="{{route('admin')}}">Admin page</a>
 @endif
 
 <form method="get" action="{{url('/search')}}">
@@ -23,13 +23,11 @@
 
 @foreach ($products as $product)
 
-    <li>naam: {{$product['name']}}</li>
-    <li>prijs: €{{$product['price']}}</li>
-    <a href="{{route('buy')}}">Kopen!</a>
+    @if($product['status'] === 1)
 
-    @if(Auth::user()?->admin == 1)
-    <a href="{{route('deleteProduct', ['id' => $product['id']])}}">delete</a>
-    <a href="{{route('editProduct', ['id' => $product['id']])}}" >edit</a>
+        <li>naam: {{$product['name']}}</li>
+        <li>prijs: €{{$product['price']}}</li>
+        <a href="{{route('buy')}}">Kopen!</a>
     @endif
 
 @endforeach

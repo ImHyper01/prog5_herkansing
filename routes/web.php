@@ -35,4 +35,9 @@ Route::post('/editProduct/{id}', [App\Http\Controllers\productController::class,
 Route::get('/search', [App\Http\Controllers\productController::class, 'search'])->name('search');
 Route::get('/filter', [App\Http\Controllers\productController::class, 'filter'])->name('filter');
 
+Route::get('/admin', [App\Http\Controllers\adminController::class, 'index'])->name('admin')->middleware('admin');
+
+Route::put('/status', [App\Http\Controllers\adminController::class, 'status'])->name('admin.status')->middleware('admin');
+
+
 Route::get('buy', [App\Http\Controllers\productController::class, 'buy'])->name('buy');
