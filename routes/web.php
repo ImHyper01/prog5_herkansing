@@ -31,3 +31,8 @@ Route::get('/deleteProduct/{id}', [App\Http\Controllers\productController::class
 
 Route::get('/editProduct/{id}', [App\Http\Controllers\productController::class, 'editProduct'])->name('editProduct');
 Route::post('/editProduct/{id}', [App\Http\Controllers\productController::class, 'postProduct'])->name('postProduct');
+
+Route::get('/search', [App\Http\Controllers\productController::class, 'search'])->name('search');
+Route::get('/filter', [App\Http\Controllers\productController::class, 'filter'])->name('filter');
+
+Route::get('buy', [App\Http\Controllers\productController::class, 'buy'])->name('buy');

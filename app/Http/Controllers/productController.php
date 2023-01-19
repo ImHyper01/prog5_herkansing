@@ -59,4 +59,30 @@ class productController extends Controller
         $product->save();
         return redirect()->route('products');
     }
+
+//filters
+    public function search(Request $request){
+        $search_text = $request->query('search');
+        $products = product::where('name', 'like', '%' . $search_text. '%')
+            ->orWhere('price', 'like', '%' . $search_text . '%')->get();
+
+        return view('products\products', compact('products'));
+    }
+
+    public function filter(Request $request){
+        $filter_menu = $request->query('filter');
+        $products = product::where('price', 'like', '%' . $filter_menu. '%')->get();
+
+        return view('products\products', compact('products'));
+    }
+
+
+
+
+
+
+
+    public function buy(){
+        return view('products\buy');
+    }
 }
